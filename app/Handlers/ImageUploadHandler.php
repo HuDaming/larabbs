@@ -2,7 +2,7 @@
 
 namespace App\Handlers;
 
-use Faker\Provider\Image;
+use Image;
 
 class ImageUploadHandler
 {
