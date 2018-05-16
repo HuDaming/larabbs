@@ -11,6 +11,10 @@ class TopicObserver
 {
     public function saving(Topic $topic)
     {
-        $topic->excerpt = '';
+        // 防止 XSS 攻击，对内容进行过滤
+        $topic->body = clean($topic->body, 'user_topic_body');
+
+        // 生成摘要
+        $topic->excerpt = make_excerpt($topic->body);
     }
 }
